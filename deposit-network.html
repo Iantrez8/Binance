@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Choose Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=deposit-flow-v2">
+</head>
+
+<body>
+    <div class="phone-viewport">
+
+        <!-- Sticky Deposit Header -->
+        <header class="coin-select-header">
+            <a href="deposit-select-coin.html" class="coin-header-back-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="20" y1="12" x2="4" y2="12"></line>
+                    <polyline points="10 18 4 12 10 6"></polyline>
+                </svg>
+            </a>
+            <span class="coin-header-title">Deposit USDT</span>
+            <div class="header-right-action" style="gap: 16px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="6" y="4" width="12" height="16" rx="2"></rect>
+                    <polyline points="10 4 10 8 14 8 14 4"></polyline>
+                    <line x1="12" y1="12" x2="12.01" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="scroll-content network-scroll-content">
+            
+            <div class="network-header-text">
+                <h2>Choose Network</h2>
+            </div>
+
+            <div class="network-list">
+                
+                <!-- BSC Network Card -->
+                <div class="network-card">
+                    <div class="network-card-top">
+                        <span class="network-badge-inline">BSC</span>
+                        <span class="network-name-inline">BNB Smart Chain (BEP20)</span>
+                    </div>
+                    <div class="network-card-details">
+                        <div class="network-detail-item">1 block confirmation/s</div>
+                        <div class="network-detail-item">Min. deposit >0.01 USDT</div>
+                        <div class="network-detail-item">Est. arrival 1 mins</div>
+                    </div>
+                </div>
+
+                <!-- TRX Network Card -->
+                <div class="network-card">
+                    <div class="network-card-top">
+                        <span class="network-badge-inline">TRX</span>
+                        <span class="network-name-inline">Tron (TRC20)</span>
+                    </div>
+                    <div class="network-card-details">
+                        <div class="network-detail-item">1 block confirmation/s</div>
+                        <div class="network-detail-item">Min. deposit >0.01 USDT</div>
+                        <div class="network-detail-item">Est. arrival 1 mins</div>
+                    </div>
+                </div>
+
+                <!-- ETH Network Card (Functional) -->
+                <div class="network-card functional" id="networkCardETH">
+                    <div class="network-card-top">
+                        <span class="network-badge-inline">ETH</span>
+                        <span class="network-name-inline">Ethereum (ERC20)</span>
+                    </div>
+                    <div class="network-card-details">
+                        <div class="network-detail-item">6 block confirmation/s</div>
+                        <div class="network-detail-item">Min. deposit >0.001 USDT</div>
+                        <div class="network-detail-item">Est. arrival 2 mins</div>
+                    </div>
+                </div>
+
+                <!-- APT Network Card -->
+                <div class="network-card">
+                    <div class="network-card-top">
+                        <span class="network-badge-inline">APT</span>
+                        <span class="network-name-inline">Aptos</span>
+                    </div>
+                    <div class="network-card-details">
+                        <div class="network-detail-item">1 block confirmation/s</div>
+                        <div class="network-detail-item">Min. deposit >0.00001 USDT</div>
+                        <div class="network-detail-item">Est. arrival 1 mins</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="network-warning-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <p>Please note that only supported networks on Binance platform are shown, if you deposit via another network your assets may be lost.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script Import -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const networkCardETH = document.getElementById('networkCardETH');
+            if (networkCardETH) {
+                networkCardETH.addEventListener('click', () => {
+                    networkCardETH.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        networkCardETH.style.transform = 'scale(1)';
+                        // Route to the final deposit address page
+                        window.location.href = 'deposit-usdt.html';
+                    }, 120);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

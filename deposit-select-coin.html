@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Select Coin (Deposit)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=deposit-flow-v2">
+</head>
+
+<body>
+    <div class="phone-viewport">
+
+        <!-- Sticky Select Coin Header -->
+        <header class="coin-select-header">
+            <a href="assets.html" class="coin-header-back-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="20" y1="12" x2="4" y2="12"></line>
+                    <polyline points="10 18 4 12 10 6"></polyline>
+                </svg>
+            </a>
+            <span class="coin-header-title">Select Coin</span>
+            <div style="width: 32px;"></div> <!-- visual spacer -->
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main class="scroll-content">
+
+            <!-- Search Coins Section -->
+            <section class="coin-search-container">
+                <div class="coin-search-bar">
+                    <svg class="coin-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="coin-search-input" placeholder="Search Coins">
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="deposit-history-section">
+                <div class="deposit-section-header">
+                    <span class="deposit-section-title">History</span>
+                    <svg class="deposit-trash-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="deposit-history-pills" style="font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;">
+                    <span class="deposit-pill">USDT</span>
+                    <span class="deposit-pill">BTC</span>
+                    <span class="deposit-pill">AI</span>
+                    <span class="deposit-pill">ACT</span>
+                </div>
+            </section>
+
+            <!-- Trending Section -->
+            <section class="deposit-trending-section">
+                <div class="deposit-section-header">
+                    <span class="deposit-section-title">Trending</span>
+                </div>
+                
+                <div class="deposit-coin-list">
+                    <!-- BTC Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <!-- Using a generic BTC-like styling for SVG -->
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+                                    <path d="M22.016 13.91c.21-1.396-.848-2.146-2.274-2.639l.465-1.865-1.134-.282-.452 1.815c-.297-.074-.6-.146-.906-.216l.455-1.823-1.134-.283-.464 1.861c-.246-.057-.487-.11-.722-.164v.006l-1.564-.39-.302 1.21s.842.193.824.205c.46.115.543.421.529.664l-.529 2.122c.032.008.073.023.118.044l-.12-.03-.74 2.966c-.059.155-.213.389-.548.305.013.018-.824-.206-.824-.206l-.565 1.304 1.478.368c.273.068.543.139.81.206l-.473 1.9 1.135.283.465-1.866c.307.08.608.156.9.227l-.463 1.852 1.134.283.473-1.895c1.916.365 3.357.218 3.967-1.526.492-1.405-.054-2.213-1.036-2.738.736-.169 1.29-.611 1.436-1.545zm-2.55 3.633c-.347 1.393-2.686.68-3.44.492l.613-2.46c.754.188 3.188.514 2.827 1.968zm.344-3.518c-.314 1.26-2.261.64-2.89.484l.555-2.231c.63.157 2.664.425 2.335 1.747z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">BTC</span>
+                                <span class="deposit-coin-full">Bitcoin</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ETH Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#627EEA"/>
+                                    <path d="M16 23.333L8.667 19l7.333 10.333L23.333 19 16 23.333z" fill="white" fill-opacity="0.6"/>
+                                    <path d="M16 4.333L8.667 16.333 16 19.667l7.333-3.334L16 4.333z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">ETH</span>
+                                <span class="deposit-coin-full">Ethereum</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- USDT Row Item (Functional) -->
+                    <div class="deposit-coin-row functional" id="depositCoinUSDT">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <img src="assets/usdt.svg" class="asset-logo-img" width="32" height="32" alt="USDT">
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">USDT</span>
+                                <span class="deposit-coin-full">TetherUS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BNB Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#F3BA2F"/>
+                                    <path d="M12.115 13.784L16 9.899l3.885 3.885 2.193-2.193-6.078-6.078-6.078 6.078 2.193 2.193zm7.77 4.432L16 22.101l-3.885-3.885-2.193 2.193 6.078 6.078 6.078-6.078-2.193-2.193zM16 18.23l-2.229-2.23L16 13.771l2.229 2.229L16 18.23z" fill="white"/>
+                                    <path d="M22.078 16l-2.193-2.193-2.23 2.23 4.423 4.423 2.193-2.193-2.193-2.267zm-12.156 0L12.115 13.807l2.23 2.23-4.423 4.423L7.729 18.267 9.922 16z" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">BNB</span>
+                                <span class="deposit-coin-full">BNB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- O Group Header -->
+                    <div class="deposit-coin-group-header">O</div>
+
+                    <!-- OG Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#FFFFFF"/>
+                                    <path d="M11 16c0-2.8 2.2-5 5-5 2.8 0 5 2.2 5 5 0 2.8-2.2 5-5 5-2.8 0-5-2.2-5-5zm5-4c-2.2 0-4 1.8-4 4 0 2.2 1.8 4 4 4 2.2 0 4-1.8 4-4 0-2.2-1.8-4-4-4z" fill="#7522BF"/>
+                                    <path d="M16 16c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3z" fill="#7522BF"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">OG</span>
+                                <span class="deposit-coin-full">OG</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1 Group Header -->
+                    <div class="deposit-coin-group-header">1</div>
+
+                    <!-- 1000CAT Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#F0F0F0"/>
+                                    <circle cx="16" cy="16" r="10" fill="#E45"/>
+                                    <path d="M16 16l3 3m-3-3l-3 3" stroke="white" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">1000CAT</span>
+                                <span class="deposit-coin-full">1000*Simons Cat</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1000CHEEMS Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#2D201A"/>
+                                    <path d="M16 10c-3 0-5 2-5 6s2 6 5 6 5-2 5-6-2-6-5-6z" fill="#D2A478"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">1000CHEEMS</span>
+                                <span class="deposit-coin-full">1000*cheems.pet</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1000PEPPER Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#E63946"/>
+                                    <circle cx="16" cy="16" r="6" fill="#F4A261"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">1000PEPPER</span>
+                                <span class="deposit-coin-full">PEPPER</span>
+                            </div>
+                        </div>
+                        <div class="deposit-coin-right-action">
+                            <span class="deposit-suspend-text">Suspend</span>
+                            <div class="suspend-icon" style="background-color: #2F3354; border-radius: 4px; padding: 2px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#627EEA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1000SATS Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+                                    <text x="16" y="21" font-size="16" font-family="Arial" font-weight="bold" fill="white" text-anchor="middle">S</text>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">1000SATS</span>
+                                <span class="deposit-coin-full">1000*SATS (Ordinals)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1INCH Row Item -->
+                    <div class="deposit-coin-row">
+                        <div class="deposit-coin-left">
+                            <div class="asset-logo-wrapper">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="16" cy="16" r="16" fill="#1C1C28"/>
+                                    <rect x="12" y="10" width="8" height="12" fill="white" rx="2"/>
+                                </svg>
+                            </div>
+                            <div class="deposit-coin-names">
+                                <span class="deposit-coin-symbol">1INCH</span>
+                                <span class="deposit-coin-full">1INCH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Vertical Alphabet Scrubber -->
+        <div class="alphabet-scrubber" style="font-family: 'Brush Script MT', 'Lucida Handwriting', cursive; font-size: 11px;">
+            <span>0</span><span>1</span><span>2</span><span>A</span><span>B</span><span>C</span>
+            <span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span>
+            <span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span>
+            <span>P</span><span>Q</span><span>R</span><span>S</span><span>T</span><span>U</span>
+            <span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+        </div>
+
+    </div>
+
+    <!-- Script Import -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const coinRow = document.getElementById('depositCoinUSDT');
+            if (coinRow) {
+                coinRow.addEventListener('click', () => {
+                    coinRow.style.transform = 'scale(0.97)';
+                    setTimeout(() => {
+                        coinRow.style.transform = 'scale(1)';
+                        // Route to the new Deposit Network page
+                        window.location.href = 'deposit-network.html';
+                    }, 120);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

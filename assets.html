@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Assets</title>
+    <!-- Google Fonts: Inter with premium weights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=drawer-blend-v10">
+</head>
+
+<body>
+    <!-- Premium Viewport Container centered on desktop, full-screen on mobile -->
+    <div class="phone-viewport">
+
+        <!-- Sticky Header Upper Navigation tabs -->
+        <header class="assets-header-nav">
+            <nav class="assets-tabs-list">
+                <span class="assets-tab-item active">Overview</span>
+                <span class="assets-tab-item">Spot</span>
+                <span class="assets-tab-item">Funding</span>
+                <span class="assets-tab-item">Futures</span>
+            </nav>
+        </header>
+
+        <!-- Main Scrollable Content -->
+        <main class="scroll-content">
+
+            <!-- Est. Total Value & Buttons section -->
+            <section class="assets-balance-section">
+                <div class="assets-balance-header">
+                    <div class="assets-balance-title-row">
+                        <span>Est. Total Value</span>
+                        <!-- Interactive Privacy Eye Icon SVG -->
+                        <svg class="assets-eye-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+
+                    <div class="assets-header-actions-right">
+                        <!-- Rising Trend Line Chart Icon -->
+                        <svg class="assets-header-action-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                            <polyline points="17 6 23 6 23 12"></polyline>
+                        </svg>
+
+                        <!-- Historical Statement Paper Clock Link to history drawer -->
+                        <a href="javascript:void(0)" id="openHistoryDrawerBtn">
+                            <svg class="assets-header-action-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Main Balance Value Display (KES pegged) -->
+                <div class="assets-balance-amount-row">
+                    <span class="assets-balance-val">KSh436.61</span>
+                    <div class="assets-currency-select-wrapper">
+                        <span class="assets-currency-box" id="assetsCurrencySelector">
+                            <span id="activeCurrencyLabel">KES</span>
+                            <svg class="assets-currency-caret-svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                        
+                        <!-- Premium Dropdown Menu -->
+                        <div class="assets-currency-dropdown" id="assetsCurrencyDropdown">
+                            <div class="currency-dropdown-option active" data-currency="KES">KES</div>
+                            <div class="currency-dropdown-option" data-currency="USDT">USDT</div>
+                            <div class="currency-dropdown-option" data-currency="BTC">BTC</div>
+                            <div class="currency-dropdown-option" data-currency="ETH">ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PNL Row -->
+                <div class="assets-pnl-row">
+                    <span>Today's PNL</span>
+                    <span class="assets-pnl-val">KSh0.00(0.00%)</span>
+                    <svg class="assets-pnl-arrow-svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Rounded Action buttons panel -->
+            <section class="assets-actions-panel">
+                <button class="assets-btn assets-btn-primary" id="assetsDepositBtn">Add Funds</button>
+                <button class="assets-btn assets-btn-secondary" id="assetsSendBtn">Send</button>
+                <button class="assets-btn assets-btn-secondary">Transfer</button>
+            </section>
+
+            <!-- Subtabs (Crypto vs Account) -->
+            <section class="assets-content-tabs">
+                <div class="assets-subtabs">
+                    <span class="assets-subtab-item active">Crypto</span>
+                    <span class="assets-subtab-item">Account</span>
+                </div>
+
+                <div class="assets-filter-actions">
+                    <!-- Search glass -->
+                    <svg class="assets-filter-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <!-- Settings gear icon -->
+                    <svg class="assets-filter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- Crypto Items List -->
+            <section class="assets-items-list">
+                <div class="asset-item-row">
+                    <div class="asset-row-top">
+                        <div class="asset-item-left">
+                            <!-- High-Fidelity Official Tether (USDT) logo -->
+                            <div class="asset-logo-wrapper">
+                                <img src="assets/usdt.svg" class="asset-logo-img" width="32" height="32" alt="USDT">
+                            </div>
+                            <div class="asset-names">
+                                <span class="asset-name-symbol">USDT</span>
+                                <span class="asset-name-full">TetherUS</span>
+                            </div>
+                        </div>
+
+                        <div class="asset-item-right">
+                            <span class="asset-bal-crypto">3.36867032</span>
+                            <span class="asset-bal-fiat">KSh436.61</span>
+                        </div>
+                    </div>
+
+                    <div class="asset-row-bottom">
+                        <button class="asset-action-btn">Earn</button>
+                        <button class="asset-action-btn">Trade</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Floating smiley assistant -->
+        <div class="floating-assistant-wrapper">
+            <img src="assets/ai.png" class="assistant-ai-img" width="44" height="44" alt="AI Assistant">
+        </div>
+
+        <!-- Sticky Global Bottom Navigation Bar -->
+        <footer class="global-bottom-nav">
+            <!-- Home -->
+            <a href="index.html" class="nav-tab-link">
+                <!-- Binance Diamond Home Icon -->
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 126.61 126.61" fill="currentColor">
+                    <polygon points="38.73,53.98 63.3,29.41 87.89,53.98 102.31,39.57 63.3,0.54 24.32,39.57" />
+                    <polygon points="0.54,63.3 14.96,48.89 29.37,63.3 14.96,77.72" />
+                    <polygon points="38.73,72.63 63.3,97.2 87.89,72.63 102.31,87.04 63.3,126.07 24.32,87.06" />
+                    <polygon points="97.24,63.31 111.66,48.9 126.07,63.31 111.66,77.73" />
+                    <polygon points="77.83,63.3 63.3,48.78 52.59,59.49 51.34,60.73 48.78,63.3 63.3,77.83 77.83,63.31" />
+                </svg>
+                <span class="nav-tab-label">Home</span>
+            </a>
+            <!-- Markets -->
+            <a href="javascript:void(0)" class="nav-tab-link">
+                <!-- Markets Icon: Trendline with up arrow and underline bar -->
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19h16" />
+                    <path d="M6 14l4-5 4 3 5-6" />
+                    <path d="M15 6h4v4" />
+                </svg>
+                <span class="nav-tab-label">Markets</span>
+            </a>
+            <!-- Trade -->
+            <a href="javascript:void(0)" class="nav-tab-link">
+                <!-- Trade Icon: Double curved arrows circle with center diamond -->
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 12c0-4.4 3.6-8 8-8c2.4 0 4.6 1.1 6 2.8" />
+                    <path d="M14 7h5V2" />
+                    <path d="M20 12c0 4.4-3.6 8-8 8c-2.4 0-4.6-1.1-6-2.8" />
+                    <path d="M10 17H5v5" />
+                    <polygon points="12,8.5 15.5,12 12,15.5 8.5,12" fill="currentColor" stroke="none" />
+                </svg>
+                <span class="nav-tab-label">Trade</span>
+            </a>
+            <!-- Futures -->
+            <a href="javascript:void(0)" class="nav-tab-link">
+                <!-- Futures Icon: Document outline with yellow/gold diamond bottom-right -->
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="3" width="14" height="18" rx="2" />
+                    <line x1="8" y1="8" x2="16" y2="8" />
+                    <line x1="8" y1="12" x2="13" y2="12" />
+                    <polygon points="18,14.5 21.5,18 18,21.5 14.5,18" fill="#F0B90B" stroke="none" />
+                </svg>
+                <span class="nav-tab-label">Futures</span>
+            </a>
+            <!-- Assets (Active) -->
+            <a href="assets.html" class="nav-tab-link active">
+                <!-- Assets Icon: Folder/Wallet slot with center-right diamond -->
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 6h5l2 2h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
+                    <polygon points="15,11 18,14 15,17 12,14" fill="#F0B90B" stroke="none" />
+                </svg>
+                <span class="nav-tab-label">Assets</span>
+            </a>
+        </footer>
+
+        <!-- Bottom Drawer Backdrop Overlay -->
+        <div class="drawer-backdrop" id="withdrawDrawerBackdrop"></div>
+
+        <!-- Select Deposit Method Drawer -->
+        <div class="withdraw-drawer" id="depositDrawer">
+            <!-- Draggable handle indicator -->
+            <div class="drawer-handle"></div>
+            
+            <div class="drawer-header">
+                <span class="drawer-title">Select Deposit Method</span>
+            </div>
+            
+            <div class="drawer-items-list">
+                <!-- Option 1: Deposit Crypto (FUNCTIONAL) -->
+                <div class="drawer-item functional" id="depositMethodCrypto">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <polyline points="19 12 12 19 5 12"></polyline>
+                            <line x1="4" y1="22" x2="20" y2="22"></line>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">Deposit Crypto</div>
+                        <div class="drawer-item-desc">Deposit Crypto from other exchanges/wallets to Binance</div>
+                    </div>
+                </div>
+
+                <!-- Option 2: Receive Via Binance Pay -->
+                <div class="drawer-item" id="depositMethodPay">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <circle cx="12" cy="11" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">Receive Via Binance Pay</div>
+                        <div class="drawer-item-desc">Receive crypto from other Binance users</div>
+                    </div>
+                </div>
+
+                <!-- Option 3: P2P Trading -->
+                <div class="drawer-item" id="depositMethodP2P">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">P2P Trading</div>
+                        <div class="drawer-item-desc">Buy directly from users. Competitive pricing. Local payments</div>
+                    </div>
+                </div>
+
+                <!-- Option 4: Buy with KES -->
+                <div class="drawer-item" id="depositMethodFiat">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">Buy with KES</div>
+                        <div class="drawer-item-desc">Buy crypto easily via bank transfer, card, and more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Select Withdraw Method Drawer -->
+        <div class="withdraw-drawer" id="withdrawDrawer">
+            <!-- Draggable handle indicator -->
+            <div class="drawer-handle"></div>
+            
+            <div class="drawer-header">
+                <span class="drawer-title">Select Withdraw Method</span>
+            </div>
+            
+            <div class="drawer-items-list">
+                <!-- Option 1: Send to Binance users -->
+                <div class="drawer-item" id="withdrawMethodBinance">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            <path d="M14.05 2a9 9 0 0 1 8 8M14.05 5.5a5.5 5.5 0 0 1 4.5 4.5"></path>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">Send to Binance users</div>
+                        <div class="drawer-item-desc">Binance internal transfer, send via Email/Phone/ID</div>
+                    </div>
+                </div>
+
+                <!-- Option 2: Withdraw Crypto (FUNCTIONAL) -->
+                <div class="drawer-item functional" id="withdrawMethodCrypto">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="3" x2="12" y2="17"></line>
+                            <polyline points="5 10 12 3 19 10"></polyline>
+                            <line x1="4" y1="21" x2="20" y2="21"></line>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">Withdraw Crypto</div>
+                        <div class="drawer-item-desc">Withdraw Crypto from Binance to other exchanges/wallets</div>
+                    </div>
+                </div>
+
+                <!-- Option 3: Withdraw USD -->
+                <div class="drawer-item" id="withdrawMethodUSD">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="3" y1="21" x2="21" y2="21"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                            <path d="M4 18v-8M9 18v-8M14 18v-8M19 18v-8M11.5 2L3 8h17l-8.5-6z"></path>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">Withdraw USD</div>
+                        <div class="drawer-item-desc">Sell your crypto for USD and withdraw via SWIFT bank transfer</div>
+                    </div>
+                </div>
+
+                <!-- Option 4: P2P Trading -->
+                <div class="drawer-item" id="withdrawMethodP2P">
+                    <div class="drawer-item-icon-box">
+                        <svg class="drawer-icon-svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="drawer-item-texts">
+                        <div class="drawer-item-title">P2P Trading</div>
+                        <div class="drawer-item-desc">Sell directly to users. Competitive pricing. Local payments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Selection Drawer (Added for Redesign) -->
+        <div class="withdraw-drawer" id="historyDrawer">
+            <div class="drawer-handle"></div>
+            
+            <div class="drawer-header" style="justify-content: flex-start; padding-left: 20px; padding-bottom: 10px;">
+                <span class="drawer-title">Select History</span>
+            </div>
+            
+            <div class="drawer-items-list" style="padding: 0 20px 20px 20px;">
+                <!-- Assets History -->
+                <a href="history.html" class="history-drawer-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border-color); text-decoration: none;">
+                    <div class="history-drawer-texts">
+                        <div class="history-drawer-item-title" style="color: var(--color-text-white); font-weight: 600; font-size: 16px; margin-bottom: 4px;">Assets</div>
+                        <div class="history-drawer-item-desc" style="color: var(--color-text-gray); font-size: 12px; line-height: 1.4;">Overall, P2P, Fiat Buy, Convert, Transfer</div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-text-gray);">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+                
+                <!-- My Trades History -->
+                <div class="history-drawer-item locked" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; cursor: pointer;">
+                    <div class="history-drawer-texts">
+                        <div class="history-drawer-item-title" style="color: var(--color-text-white); font-weight: 600; font-size: 16px; margin-bottom: 4px;">My Trades</div>
+                        <div class="history-drawer-item-desc" style="color: var(--color-text-gray); font-size: 12px; line-height: 1.4;">Spot, Cross Margin, Isolated Margin, USDⓈ-M Futures, COIN-M Futures...</div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--color-text-gray);">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script Import -->
+    <script src="app.js?v=drawer-blend-v16"></script>
+    <script type="module" src="firebase-sync.js?v=23"></script>
+</body>
+
+</html>

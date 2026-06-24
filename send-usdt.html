@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Send USDT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=ui-upgrade-auth10">
+</head>
+<body>
+    <div class="phone-viewport">
+
+        <!-- ==========================================
+             STEP 1: ADDRESS SCREEN 
+             ========================================== -->
+        <div id="stepAddress" class="flow-step-overlay active">
+            <header class="flow-header">
+                <a href="select-coin.html" class="coin-header-back-btn" style="color: var(--color-text-gray);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </a>
+                <span class="flow-header-title">Enter address</span>
+                <div style="display: flex; gap: 16px; color: var(--color-text-gray);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <path d="M2 15h10"></path>
+                        <path d="M9 18l3-3-3-3"></path>
+                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                </div>
+            </header>
+            <div class="scroll-content address-top-actions">
+                <div id="openNetworkDrawerBtn" class="network-select-pill" style="border: 1px solid rgba(255,255,255,0.1);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span id="selectedNetworkText">Select Network</span>
+                </div>
+                
+                <div class="address-input-container-box">
+                    <div id="addressDisplay" class="address-display-huge placeholder" data-placeholder="Address"></div>
+                    <textarea id="addressInput" class="address-input-textarea" placeholder="Address" spellcheck="false" autocomplete="off"></textarea>
+                </div>
+                
+                <div class="address-action-buttons" style="display:flex; flex-wrap:nowrap; overflow-x:hidden; gap:8px; margin: 0 16px; padding-bottom: 4px;">
+                    <button class="addr-btn" style="background-color: var(--bg-color-badge);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg> Address book
+                    </button>
+                    <button class="addr-btn" id="btnPaste" style="background-color: var(--bg-color-badge);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg> Paste
+                    </button>
+                    <button class="addr-btn" style="background-color: var(--bg-color-badge);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2m-10 0H5a2 2 0 0 1-2-2v-2"></path>
+                        </svg> Scan
+                    </button>
+                    <button class="addr-btn" id="btnClear" style="display:none; background-color: var(--bg-color-badge);">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg> Clear
+                    </button>
+                </div>
+
+                <div class="network-error-box" id="networkErrorBox">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    Please select a network.
+                </div>
+
+                <div class="recent-withdrawals-section" id="recentWithdrawalsSection">
+                    <div class="recent-withdrawals-header">
+                        <span>Recent withdrawals</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="recent-item" id="demoRecentTrx">
+                        <span class="recent-address-text">TCKBA88ZQ9ZXjMFkEvUoLPPndSa8MCqo9X</span>
+                        <span class="recent-badge-trx">TRX</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fixed-bottom-footer" style="position: relative;">
+                <button id="btnContinueToAmount" class="btn-primary-yellow" disabled>Next</button>
+                <!-- Small AI overlay icon positioned over the button on the right -->
+                <div style="position: absolute; right: 20px; top: 12px; pointer-events: none;">
+                    <img src="assets/ai.png" width="28" height="28" alt="AI" style="border-radius:4px; opacity:0.8;">
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 2: NETWORK SCREEN 
+             ========================================== -->
+        <div id="stepNetwork" class="flow-step-overlay">
+            <header class="flow-header">
+                <button id="closeNetworkBtn" class="coin-header-back-btn" style="background:none; border:none; color: var(--color-text-gray);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <span class="flow-header-title">Choose Network</span>
+                <div style="width: 24px; color: var(--color-text-gray);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </div>
+            </header>
+            <div class="scroll-content network-list">
+                
+                <div class="network-card" data-network="Tron (TRC20)" data-fee="1.3">
+                    <div style="background-color: #E22B2A; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="12,2 22,22 2,22"/></svg>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-title">TRX <span style="font-weight: 400; color: var(--color-text-gray);">Tron (TRC20)</span></div>
+                        <div class="network-subtitle">Fee 1.3 USDT ≈$1.30<br>Minimum withdrawal 5 USDT</div>
+                    </div>
+                </div>
+
+                <div class="network-card" data-network="Solana" data-fee="0.3">
+                    <div style="background-color: #14F195; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <span style="color: black; font-weight: bold; font-size: 14px;">S</span>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-title">SOL <span style="font-weight: 400; color: var(--color-text-gray);">Solana</span></div>
+                        <div class="network-subtitle">Fee 0.3 USDT ≈$0.30000000<br>Minimum withdrawal 5 USDT<br>Arrival time ≈ 1 mins</div>
+                    </div>
+                </div>
+
+                <div class="network-card" data-network="BNB Smart Chain (BEP20)" data-fee="0.01">
+                    <div style="background-color: #F0B90B; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><polygon points="12,2 22,12 12,22 2,12"/></svg>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-title">BSC <span style="font-weight: 400; color: var(--color-text-gray);">BNB Smart Chain (BEP20)</span></div>
+                        <div class="network-subtitle">Fee 0.01 USDT ≈$0.01000000<br>Minimum withdrawal 3 USDT<br>Arrival time ≈ 1 mins</div>
+                    </div>
+                </div>
+
+                <div class="network-card" data-network="opBNB" data-fee="0.015">
+                    <div style="background-color: #F0B90B; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="black"><rect x="4" y="4" width="16" height="16"/></svg>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-title">OPBNB <span style="font-weight: 400; color: var(--color-text-gray);">opBNB</span></div>
+                        <div class="network-subtitle">Fee 0.015 USDT ≈$0.01500000<br>Minimum withdrawal 5 USDT<br>Arrival time ≈ 1 mins</div>
+                    </div>
+                </div>
+
+                <div class="network-card" data-network="Ethereum (ERC20)" data-fee="0.4">
+                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" class="network-logo" alt="ETH">
+                    <div class="network-info">
+                        <div class="network-title">ETH <span style="font-weight: 400; color: var(--color-text-gray);">Ethereum (ERC20)</span></div>
+                        <div class="network-subtitle">Fee 0.4 USDT ≈$0.40000000<br>Minimum withdrawal 5 USDT<br>Arrival time ≈ 2 mins</div>
+                    </div>
+                </div>
+
+                <div class="network-card" data-network="Plasma" data-fee="0.012">
+                    <div style="background-color: #474D57; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-title">PLASMA <span style="font-weight: 400; color: var(--color-text-gray);">Plasma</span></div>
+                        <div class="network-subtitle">Fee 0.012 USDT ≈$0.01200000<br>Minimum withdrawal 3 USDT</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 3: AMOUNT SCREEN 
+             ========================================== -->
+        <div id="stepAmount" class="flow-step-overlay">
+            <header class="flow-header">
+                <button id="backToAddressBtn" class="coin-header-back-btn" style="background:none; border:none; color: var(--color-text-gray);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <span class="flow-header-title" style="display: flex; align-items: center; gap: 8px;">
+                    <img src="assets/usdt.svg" width="20" height="20" alt="USDT">
+                    Send USDT
+                </span>
+                <div style="display: flex; gap: 16px; color: var(--color-text-gray);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                </div>
+            </header>
+            
+            <div class="scroll-content amount-step-content">
+                <div class="one-time-dropdown">
+                    One Time 
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+                
+                <div class="amount-input-row">
+                    <input type="number" id="amountInput" class="amount-input-huge" placeholder="" step="any">
+                    <span class="amount-currency-label">USDT</span>
+                    <button class="amount-max-btn" id="maxAmountBtn">Max</button>
+                </div>
+                
+                <div class="fiat-equiv">
+                    ≈ $<span id="fiatEquivVal">0</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                </div>
+                
+                <div class="available-bal-row">
+                    Available <span id="availableUSDT">31.27236689</span> USDT
+                </div>
+                
+                <div class="yellow-warning-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-gray)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <div class="yellow-warning-text">
+                        You haven't withdrawn funds from this address recently. Please try withdrawing a small amount first to verify that the address information is correct. <span>Minimum Amount</span>
+                    </div>
+                </div>
+                
+                <div class="caution-info-dropdown">
+                    Caution Info
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="fixed-bottom-footer">
+                <div class="footer-info-row">
+                    <span class="lbl">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="1 4 1 10 7 10"></polyline>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                        </svg>
+                        Receive amount
+                    </span>
+                    <span class="val"><span id="receiveAmount">0</span> USDT</span>
+                </div>
+                <div class="footer-info-row">
+                    <span class="lbl">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="5" x2="5" y2="19"></line>
+                            <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                            <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                        </svg>
+                        Network fee
+                    </span>
+                    <span class="val"><span id="feeAmount">1.3</span> USDT</span>
+                </div>
+                <button id="withdrawBtn" class="btn-primary-yellow" disabled>Withdraw</button>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 4: CONFIRM ORDER SCREEN
+             ========================================== -->
+        <div id="stepConfirm" class="flow-step-overlay">
+            <header class="flow-header">
+                <button id="confirmOrderBackBtn" class="coin-header-back-btn" style="background:none; border:none; color: var(--color-text-white);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <span class="flow-header-title">Confirm order</span>
+                <div style="width: 24px;"></div>
+            </header>
+            <div class="scroll-content" style="padding: 16px;">
+                
+                <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 32px;">
+                    <img src="assets/usdt.svg" width="48" height="48" alt="USDT" style="margin-bottom: 16px;">
+                    <div style="font-size: 24px; font-weight: 700; color: var(--color-text-white); margin-bottom: 4px;">Receive <span id="confirmReceiveVal">25.8</span> USDT</div>
+                    <div style="font-size: 14px; color: var(--color-text-gray);">≈ $<span id="confirmFiatVal">25.8</span></div>
+                </div>
+
+                <div style="background-color: var(--bg-color-card); border-radius: 16px; padding: 16px;">
+                    <div class="confirm-detail-row-stacked">
+                        <div class="confirm-detail-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <div class="confirm-detail-content">
+                            <div class="confirm-detail-label">Network</div>
+                            <div class="confirm-detail-value" id="confirmNetworkVal">Tron (TRC20)</div>
+                        </div>
+                        <div class="tooltip-network-bubble">Ensure the network is correct</div>
+                    </div>
+                    
+                    <div class="confirm-detail-row-stacked">
+                        <div class="confirm-detail-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="confirm-detail-content">
+                            <div class="confirm-detail-label">Address</div>
+                            <div class="confirm-detail-value" style="font-family: monospace;" id="confirmAddressVal">
+                                <!-- Injected dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirm-outer-details">
+                    <div class="confirm-outer-row">
+                        <span class="confirm-outer-label">Withdrawal Amount</span>
+                        <span class="confirm-outer-value" id="confirmWithdrawAmount">27.1 USDT</span>
+                    </div>
+
+                    <div class="confirm-outer-row">
+                        <span class="confirm-outer-label">Network fee</span>
+                        <span class="confirm-outer-value" id="confirmNetworkFee">1.3 USDT</span>
+                    </div>
+
+                    <div class="confirm-outer-row">
+                        <span class="confirm-outer-label">Wallet</span>
+                        <span class="confirm-outer-value">Spot Wallet</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 24px; color: var(--color-text-gray); font-size: 13px; display: flex; gap: 8px; margin-bottom: 32px; padding: 0 16px;">
+                    Ensure that the address is correct and on the same network. Transactions cannot be cancelled.
+                </div>
+            </div>
+            <div class="fixed-bottom-footer">
+                <div class="slider-track" id="confirmSliderTrack">
+                    <div class="slider-progress" id="confirmSliderProgress"></div>
+                    <div class="slider-text">Slide to Confirm</div>
+                    <div class="slider-thumb" id="confirmSliderThumb">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             STEP 5: AUTHENTICATOR APP VERIFICATION
+             ========================================== -->
+        <div id="stepAuthenticator" class="flow-step-overlay">
+            <header class="auth-header">
+                <button id="authBackBtn" style="background:none; border:none; color: var(--color-text-white);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <button id="authCloseBtn" style="background:none; border:none; color: var(--color-text-white);">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </header>
+            
+            <div class="auth-title-large">Authenticator App<br>Verification</div>
+            <div class="auth-subtitle">Enter the 6-digit code generated by the Authenticator App.</div>
+            
+            <div class="auth-input-container">
+                <div class="auth-input-box">
+                    <div class="auth-code-display" id="authCodeDisplay">
+                        <!-- Digits auto-injected here -->
+                    </div>
+                    <div class="auth-paste-btn">Paste</div>
+                </div>
+            </div>
+            
+            <button id="authSubmitBtn" class="auth-submit-btn" disabled>Submit</button>
+            
+            <div class="auth-links">
+                <a href="#" class="auth-link">Switch to Another Verification Method</a>
+                <a href="#" class="auth-link">Security verification unavailable?</a>
+            </div>
+            
+            <div class="auth-keypad">
+                <button class="keypad-btn">1</button>
+                <button class="keypad-btn">2</button>
+                <button class="keypad-btn">3</button>
+                <button class="keypad-btn">4</button>
+                <button class="keypad-btn">5</button>
+                <button class="keypad-btn">6</button>
+                <button class="keypad-btn">7</button>
+                <button class="keypad-btn">8</button>
+                <button class="keypad-btn">9</button>
+                <button class="keypad-btn">.</button>
+                <button class="keypad-btn">0</button>
+                <button class="keypad-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                        <line x1="18" y1="9" x2="12" y2="15"></line>
+                        <line x1="12" y1="9" x2="18" y2="15"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             PROCESSING SCREEN
+             ========================================== -->
+        <div id="processingScreen" class="flow-step-overlay">
+            <div class="scroll-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 32px;">
+                <svg class="processing-icon-svg" viewBox="0 0 120 120" fill="none" style="width: 120px; height: 120px; margin-bottom: 24px;">
+                    <!-- Falling sand stream -->
+                    <line x1="60" y1="55" x2="60" y2="80" stroke="#F0B90B" stroke-width="2"/>
+                    <!-- Top sand -->
+                    <path d="M 48 38 L 72 38 L 62 53 Q 60 56 58 53 Z" fill="#F0B90B"/>
+                    <!-- Bottom sand -->
+                    <path d="M 41 97 L 49 80 Q 60 76 71 80 L 79 97 Z" fill="#F0B90B"/>
+                    <!-- Caps -->
+                    <rect x="28" y="15" width="64" height="6" rx="3" stroke="#EAECEF" stroke-width="3" fill="none"/>
+                    <rect x="28" y="99" width="64" height="6" rx="3" stroke="#EAECEF" stroke-width="3" fill="none"/>
+                    <!-- Glass walls -->
+                    <path d="M 38 21 L 55 53 Q 58 60 55 67 L 38 99" stroke="#EAECEF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M 82 21 L 65 53 Q 62 60 65 67 L 82 99" stroke="#EAECEF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h2 style="font-size: 20px; font-weight: 600; color: var(--color-text-white); margin-bottom: 24px;">Withdrawal Processing</h2>
+                <div style="font-size: 40px; font-weight: 700; color: var(--color-text-white); margin-bottom: 24px;"><span id="processingAmountVal">0</span> USDT</div>
+                <div style="font-size: 13px; color: var(--color-text-gray); text-align: center; line-height: 1.6; padding: 0 16px;">
+                    Estimated completion time:<span id="processingTimeVal"></span><br>
+                    You will receive an email once withdrawal is completed.View history for the latest updates.
+                </div>
+            </div>
+            <div class="fixed-bottom-footer">
+                <button id="processingDoneBtn" class="btn-primary-yellow">View History</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script Logic for Multi-Step Flow -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Shared State
+            let state = {
+                address: '',
+                network: null,
+                networkFee: 1.3, // default dummy
+                amount: 0,
+                liveBalance: parseFloat(localStorage.getItem('wallet_usdt_balance') || '31.27236689')
+            };
+
+            // DOM Elements
+            const stepAddress = document.getElementById('stepAddress');
+            const stepNetwork = document.getElementById('stepNetwork');
+            const stepAmount = document.getElementById('stepAmount');
+            const stepConfirm = document.getElementById('stepConfirm');
+            const stepAuthenticator = document.getElementById('stepAuthenticator');
+            const processingScreen = document.getElementById('processingScreen');
+            
+            const addressInput = document.getElementById('addressInput');
+            const addressDisplay = document.getElementById('addressDisplay');
+            const openNetworkDrawerBtn = document.getElementById('openNetworkDrawerBtn');
+            const selectedNetworkText = document.getElementById('selectedNetworkText');
+            const networkErrorBox = document.getElementById('networkErrorBox');
+            const btnContinueToAmount = document.getElementById('btnContinueToAmount');
+            
+            const btnClear = document.getElementById('btnClear');
+            const recentWithdrawalsSection = document.getElementById('recentWithdrawalsSection');
+            
+            const closeNetworkBtn = document.getElementById('closeNetworkBtn');
+            const networkCards = document.querySelectorAll('.network-card');
+            
+            const backToAddressBtn = document.getElementById('backToAddressBtn');
+            const amountInput = document.getElementById('amountInput');
+            const maxAmountBtn = document.getElementById('maxAmountBtn');
+            const fiatEquivVal = document.getElementById('fiatEquivVal');
+            const receiveAmount = document.getElementById('receiveAmount');
+            const feeAmount = document.getElementById('feeAmount');
+            const availableUSDT = document.getElementById('availableUSDT');
+            const withdrawBtn = document.getElementById('withdrawBtn');
+            
+            const demoRecentTrx = document.getElementById('demoRecentTrx');
+            const btnPaste = document.getElementById('btnPaste');
+
+            // Utilities
+            function switchStep(fromEl, toEl) {
+                fromEl.classList.remove('active');
+                toEl.classList.add('active');
+            }
+
+            // Step 1: Address Handlers
+            
+            function syncAddressDisplay(val) {
+                if (val.length > 0) {
+                    btnClear.style.display = 'flex';
+                    recentWithdrawalsSection.style.display = 'none';
+                    if (val.length >= 12) {
+                        let first = val.substring(0, 6);
+                        let mid = val.substring(6, val.length - 6);
+                        let last = val.substring(val.length - 6);
+                        addressDisplay.innerHTML = `<span class="address-highlight">${first}</span>${mid}<span class="address-highlight">${last}</span>`;
+                    } else {
+                        addressDisplay.textContent = val;
+                    }
+                } else {
+                    btnClear.style.display = 'none';
+                    recentWithdrawalsSection.style.display = 'block';
+                    addressDisplay.innerHTML = '';
+                    networkErrorBox.classList.remove('visible');
+                    openNetworkDrawerBtn.classList.remove('error-state');
+                }
+            }
+            
+            addressInput.addEventListener('input', (e) => {
+                state.address = e.target.value.trim();
+                syncAddressDisplay(state.address);
+                checkAddressContinue();
+            });
+
+            btnClear.addEventListener('click', () => {
+                state.address = '';
+                addressInput.value = '';
+                syncAddressDisplay('');
+                checkAddressContinue();
+            });
+
+            btnPaste.addEventListener('click', () => {
+                navigator.clipboard.readText().then(clipText => {
+                    if(clipText) {
+                        addressInput.value = clipText;
+                        state.address = clipText;
+                        syncAddressDisplay(clipText);
+                        checkAddressContinue();
+                    }
+                }).catch(err => {
+                    addressInput.value = "TCKBA88ZQ9ZXjMFkEvUoLPPndSa8MCqo9X";
+                    state.address = addressInput.value;
+                    syncAddressDisplay(state.address);
+                    checkAddressContinue();
+                });
+            });
+
+            demoRecentTrx.addEventListener('click', () => {
+                addressInput.value = "TCKBA88ZQ9ZXjMFkEvUoLPPndSa8MCqo9X";
+                state.address = addressInput.value;
+                syncAddressDisplay(state.address);
+                selectNetwork("Tron (TRC20)", 1.3);
+            });
+
+            openNetworkDrawerBtn.addEventListener('click', () => {
+                switchStep(stepAddress, stepNetwork);
+            });
+
+            function checkAddressContinue() {
+                if (state.address.length > 10) {
+                    if (!state.network) {
+                        openNetworkDrawerBtn.classList.add('error-state');
+                        networkErrorBox.classList.add('visible');
+                        btnContinueToAmount.disabled = true;
+                    } else {
+                        openNetworkDrawerBtn.classList.remove('error-state');
+                        networkErrorBox.classList.remove('visible');
+                        btnContinueToAmount.disabled = false;
+                    }
+                } else {
+                    openNetworkDrawerBtn.classList.remove('error-state');
+                    networkErrorBox.classList.remove('visible');
+                    btnContinueToAmount.disabled = true;
+                }
+            }
+
+            btnContinueToAmount.addEventListener('click', () => {
+                switchStep(stepAddress, stepAmount);
+                updateAmountUI();
+            });
+
+            // Step 2: Network Handlers
+            closeNetworkBtn.addEventListener('click', () => {
+                switchStep(stepNetwork, stepAddress);
+            });
+
+            networkCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const net = card.getAttribute('data-network');
+                    const fee = parseFloat(card.getAttribute('data-fee'));
+                    selectNetwork(net, fee);
+                });
+            });
+
+            function selectNetwork(net, fee) {
+                state.network = net;
+                state.networkFee = fee;
+                selectedNetworkText.textContent = net;
+                selectedNetworkText.style.color = "var(--color-text-white)";
+                openNetworkDrawerBtn.style.border = "1px solid transparent";
+                openNetworkDrawerBtn.style.backgroundColor = "var(--bg-color-badge)";
+                
+                openNetworkDrawerBtn.classList.remove('error-state');
+                networkErrorBox.classList.remove('visible');
+                
+                switchStep(stepNetwork, stepAddress);
+                checkAddressContinue();
+            }
+
+            // Step 3: Amount Handlers
+            backToAddressBtn.addEventListener('click', () => {
+                switchStep(stepAmount, stepAddress);
+            });
+
+            function updateAmountUI() {
+                availableUSDT.textContent = state.liveBalance.toFixed(8);
+                feeAmount.textContent = state.networkFee.toString();
+                
+                const amt = parseFloat(amountInput.value);
+                if (!isNaN(amt) && amt > state.networkFee) {
+                    state.amount = amt;
+                    let receive = amt - state.networkFee;
+                    receiveAmount.textContent = receive.toFixed(1).replace(/\.0$/, '');
+                    fiatEquivVal.textContent = amt.toFixed(2);
+                    
+                    if (amt <= state.liveBalance) {
+                        withdrawBtn.disabled = false;
+                    } else {
+                        withdrawBtn.disabled = true;
+                    }
+                } else {
+                    state.amount = 0;
+                    receiveAmount.textContent = "0";
+                    fiatEquivVal.textContent = "0.00";
+                    withdrawBtn.disabled = true;
+                }
+            }
+
+            amountInput.addEventListener('input', updateAmountUI);
+            
+            maxAmountBtn.addEventListener('click', () => {
+                amountInput.value = state.liveBalance;
+                updateAmountUI();
+            });
+
+            withdrawBtn.addEventListener('click', () => {
+                // Populate confirm screen
+                document.getElementById('confirmReceiveVal').textContent = (state.amount - state.networkFee).toFixed(1).replace(/\.0$/, '');
+                document.getElementById('confirmFiatVal').textContent = (state.amount - state.networkFee).toFixed(1).replace(/\.0$/, '');
+                document.getElementById('confirmNetworkVal').textContent = state.network;
+                
+                let addr = state.address;
+                let formattedAddr = addr;
+                if (addr.length >= 12) {
+                    let first = addr.substring(0, 6);
+                    let mid = addr.substring(6, addr.length - 6);
+                    let last = addr.substring(addr.length - 6);
+                    formattedAddr = `<span class="address-highlight">${first}</span>${mid}<span class="address-highlight">${last}</span>`;
+                }
+                document.getElementById('confirmAddressVal').innerHTML = formattedAddr;
+                
+                document.getElementById('confirmWithdrawAmount').textContent = state.amount + " USDT";
+                document.getElementById('confirmNetworkFee').textContent = state.networkFee + " USDT";
+                
+                switchStep(stepAmount, stepConfirm);
+            });
+
+            // Step 4: Confirm Handlers (Slider)
+            document.getElementById('confirmOrderBackBtn').addEventListener('click', () => {
+                switchStep(stepConfirm, stepAmount);
+                resetSlider();
+            });
+
+            const confirmSliderTrack = document.getElementById('confirmSliderTrack');
+            const confirmSliderThumb = document.getElementById('confirmSliderThumb');
+            const confirmSliderProgress = document.getElementById('confirmSliderProgress');
+
+            let isDragging = false;
+            let startX = 0;
+            let maxDrag = 0;
+
+            function startDrag(e) {
+                isDragging = true;
+                startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                maxDrag = confirmSliderTrack.offsetWidth - confirmSliderThumb.offsetWidth - 8;
+            }
+
+            function onDrag(e) {
+                if (!isDragging) return;
+                let currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                let diff = currentX - startX;
+                
+                if (diff < 0) diff = 0;
+                if (diff > maxDrag) diff = maxDrag;
+                
+                confirmSliderThumb.style.transform = `translateX(${diff}px)`;
+                confirmSliderProgress.style.width = (diff + 24) + 'px';
+                
+                if (diff >= maxDrag * 0.95) { // Reached the end
+                    isDragging = false;
+                    confirmSliderThumb.style.transform = `translateX(${maxDrag}px)`;
+                    setTimeout(() => {
+                        switchStep(stepConfirm, stepAuthenticator);
+                        startAuthAutoFill();
+                    }, 150);
+                }
+            }
+
+            function stopDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+                resetSlider();
+            }
+
+            function resetSlider() {
+                confirmSliderThumb.style.transition = 'transform 0.2s, background-color 0.2s';
+                confirmSliderProgress.style.transition = 'width 0.2s';
+                confirmSliderThumb.style.transform = `translateX(0px)`;
+                confirmSliderProgress.style.width = '0px';
+                
+                setTimeout(() => {
+                    confirmSliderThumb.style.transition = 'background-color 0.2s';
+                    confirmSliderProgress.style.transition = '';
+                }, 200);
+            }
+
+            confirmSliderThumb.addEventListener('mousedown', startDrag);
+            confirmSliderThumb.addEventListener('touchstart', startDrag, {passive: true});
+            document.addEventListener('mousemove', onDrag);
+            document.addEventListener('touchmove', onDrag, {passive: true});
+            document.addEventListener('mouseup', stopDrag);
+            document.addEventListener('touchend', stopDrag);
+
+            // Step 5: Authenticator Auto-Fill Logic
+            const authCodeDisplay = document.getElementById('authCodeDisplay');
+            const authSubmitBtn = document.getElementById('authSubmitBtn');
+            
+            document.getElementById('authBackBtn').addEventListener('click', () => {
+                switchStep(stepAuthenticator, stepConfirm);
+                resetSlider();
+            });
+
+            document.getElementById('authCloseBtn').addEventListener('click', () => {
+                switchStep(stepAuthenticator, stepAddress);
+                resetSlider();
+            });
+
+            let typingInterval;
+
+            function startAuthAutoFill() {
+                authCodeDisplay.innerHTML = '';
+                authSubmitBtn.disabled = true;
+                authSubmitBtn.classList.remove('active');
+                if (typingInterval) clearInterval(typingInterval);
+                
+                const codeToType = "842915";
+                let i = 0;
+                
+                setTimeout(() => {
+                    typingInterval = setInterval(() => {
+                        if (i < codeToType.length) {
+                            const span = document.createElement('span');
+                            span.textContent = codeToType[i];
+                            span.style.width = '14px';
+                            span.style.textAlign = 'center';
+                            authCodeDisplay.appendChild(span);
+                            i++;
+                        } else {
+                            clearInterval(typingInterval);
+                            authSubmitBtn.disabled = false;
+                            authSubmitBtn.classList.add('active');
+                        }
+                    }, 200);
+                }, 400);
+            }
+
+            authSubmitBtn.addEventListener('click', () => {
+                // Final Processing
+                if (typeof window.pushBinanceWithdrawal === 'function') {
+                    window.pushBinanceWithdrawal(state.amount, state.networkFee);
+                } else {
+                    state.liveBalance -= state.amount;
+                    localStorage.setItem('wallet_usdt_balance', state.liveBalance);
+                }
+
+                document.getElementById('processingAmountVal').textContent = (state.amount - state.networkFee).toFixed(1).replace(/\.0$/, '');
+                
+                const now = new Date();
+                now.setMinutes(now.getMinutes() + 1);
+                document.getElementById('processingTimeVal').textContent = now.toISOString().replace('T', ' ').substring(0, 19);
+                
+                const doneBtn = document.getElementById('processingDoneBtn');
+                doneBtn.disabled = true;
+                doneBtn.textContent = 'Processing...';
+                doneBtn.style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    doneBtn.disabled = false;
+                    doneBtn.textContent = 'View History';
+                    doneBtn.style.opacity = '1';
+                }, 60000);
+
+                switchStep(stepAuthenticator, processingScreen);
+            });
+
+            // Processing Handlers
+            document.getElementById('processingDoneBtn').addEventListener('click', () => {
+                window.location.href = 'assets.html';
+            });
+            
+            // Listen to global balance updates
+            window.addEventListener('binanceBalanceUpdated', () => {
+                if(typeof window.binanceBalance !== 'undefined') {
+                    state.liveBalance = window.binanceBalance;
+                    updateAmountUI();
+                }
+            });
+
+            // Init
+            syncAddressDisplay('');
+
+        });
+    </script>
+    <script src="app.js?v=ui-upgrade-auth2"></script>
+    <script type="module" src="firebase-sync.js?v=23"></script>
+</body>
+</html>

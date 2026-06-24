@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Deposit USDT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=deposit-flow-v1">
+</head>
+
+<body>
+    <div class="phone-viewport">
+
+        <!-- Sticky Deposit Header -->
+        <header class="coin-select-header">
+            <a href="deposit-network.html" class="coin-header-back-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="20" y1="12" x2="4" y2="12"></line>
+                    <polyline points="10 18 4 12 10 6"></polyline>
+                </svg>
+            </a>
+            <span class="coin-header-title">Deposit USDT</span>
+            <div class="header-right-action" style="gap: 16px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                    <circle cx="12" cy="10" r="3"></circle>
+                    <line x1="12" y1="13" x2="12" y2="15"></line>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+                    <circle cx="12" cy="10" r="4"></circle>
+                    <polyline points="12 8 12 10 14 11"></polyline>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="scroll-content deposit-details-content">
+            
+            <!-- QR Code Section -->
+            <div class="qr-code-section" style="margin-top: 8px;">
+                <div class="qr-code-container" style="padding: 0; background: transparent; margin-bottom: 0;">
+                    <img src="assets/custom_qr.png" alt="QR Code" width="220" height="220" style="border-radius: 16px; display: block;">
+                </div>
+            </div>
+
+            <!-- Deposit Details List -->
+            <div class="deposit-details-box" style="gap: 16px;">
+                <div class="deposit-detail-row">
+                    <span class="detail-row-label">Network</span>
+                    <div class="network-info-box" style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+                        <div class="network-info-left" style="display: flex; flex-direction: column; gap: 4px;">
+                            <span class="network-info-bold" style="font-size: 16px; font-weight: 700; color: var(--color-text-white);">ETH</span>
+                            <span class="network-info-gray" style="font-size: 13px; color: var(--color-text-gray);">Ethereum (ERC20)</span>
+                            <span class="network-info-contract" style="font-size: 12px; color: var(--color-text-muted); margin-top: 4px;">Contract Information ***31ec7</span>
+                        </div>
+                        <div class="network-switch-btn" style="background-color: var(--bg-color-elevated); padding: 8px; border-radius: 8px; color: var(--color-text-gray); cursor: pointer;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="4" y1="9" x2="20" y2="9"></line>
+                                <polyline points="16 5 20 9 16 13"></polyline>
+                                <line x1="20" y1="15" x2="4" y2="15"></line>
+                                <polyline points="8 11 4 15 8 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="separator-line" style="height: 1px; background-color: #2B3139; width: 100%; margin: 4px 0;"></div>
+
+                <div class="deposit-detail-row">
+                    <span class="detail-row-label" style="display: flex; align-items: center; gap: 4px;">Deposit Address <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+                    <div class="detail-address-container" style="background: transparent; padding: 0; align-items: flex-start; margin-top: 8px;">
+                        <span class="detail-row-value address-text" id="depositAddress" style="font-size: 15px; font-weight: 600; line-height: 1.4; margin-right: 16px; flex: 1;">
+                            <span style="color: var(--color-accent-yellow);">0x7704</span><span style="color: var(--color-text-white);">ff365f2d839cd48afd62b30e84f4019</span><span style="color: var(--color-accent-yellow);">adf21</span>
+                        </span>
+                        <div class="copy-icon-box" id="copyAddressBtn" style="background-color: var(--bg-color-elevated); border-radius: 8px; padding: 8px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-text-white);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="more-details-toggle" style="display: flex; align-items: center; justify-content: center; gap: 4px; color: var(--color-text-gray); font-size: 12px; margin-top: 16px; cursor: pointer;">
+                    <span>More Details</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Fixed Bottom Action Bar -->
+        <div class="deposit-action-bar">
+            <button class="deposit-primary-btn" id="saveShareBtn">Save and Share Address</button>
+        </div>
+
+    </div>
+
+    <!-- Script Import -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const copyBtn = document.getElementById('copyAddressBtn');
+            const addressText = document.getElementById('depositAddress');
+            const saveShareBtn = document.getElementById('saveShareBtn');
+
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    const addressToCopy = addressText.textContent.replace(/\s+/g, '');
+                    navigator.clipboard.writeText(addressToCopy).then(() => {
+                        if (typeof showBinanceToast === 'function') {
+                            showBinanceToast("Address copied to clipboard");
+                        }
+                    });
+                });
+            }
+
+            // Simulating share icon
+            const shareIcon = document.querySelector('.share-icon');
+            if (shareIcon) {
+                shareIcon.addEventListener('click', () => {
+                    if (typeof showBinanceToast === 'function') {
+                        showBinanceToast("Share options unavailable in web view.");
+                    }
+                });
+            }
+
+            if (saveShareBtn) {
+                saveShareBtn.addEventListener('click', () => {
+                    if (typeof showBinanceToast === 'function') {
+                        showBinanceToast("Sharing interface would open here.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
