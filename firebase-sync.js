@@ -196,7 +196,7 @@ function startSkyfortuneListener(uid) {
                 fbBalance = parseFloat(data.binance_balance);
             } else {
                 // Initialize if missing
-                fbBalance = 3.36867032;
+                fbBalance = 0;
                 updateDoc(userRef, { binance_balance: fbBalance });
             }
             window.binanceBalance = fbBalance;
@@ -346,7 +346,7 @@ window.pushBinanceWithdrawal = async function (amount, networkFee) {
     const netAmount = amount - (networkFee || 0); // Deduct network fee
 
     const fallbackUpdate = () => {
-        let currentLocal = parseFloat(localStorage.getItem('wallet_usdt_balance') || '3.36867032');
+        let currentLocal = parseFloat(localStorage.getItem('wallet_usdt_balance') || '0');
         currentLocal -= amount;
         localStorage.setItem('wallet_usdt_balance', currentLocal.toString());
         if (typeof window.updateBinanceBalanceUI === 'function') {

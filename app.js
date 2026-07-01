@@ -51,20 +51,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize local storage balance if not existing
     if (localStorage.getItem('wallet_usdt_balance') === null) {
-        localStorage.setItem('wallet_usdt_balance', '3.36867032');
+        localStorage.setItem('wallet_usdt_balance', '0');
     }
 
     // Realistic currency pegs for total portfolio value
     const currencyData = {
         KES: {
-            balance: "KSh436.61",
+            balance: "KSh0.00",
             pnl: "KSh0.00(0.00%)",
-            fiatAmount: "KSh436.61"
+            fiatAmount: "KSh0.00"
         },
         USDT: {
-            balance: "3.37",
+            balance: "0.00",
             pnl: "0.00(0.00%)",
-            fiatAmount: "3.37 USDT"
+            fiatAmount: "0.00 USDT"
         },
         BTC: {
             balance: "0.00004812",
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.updateAssetsUI = function () {
         // Fetch current dynamic balance synced from Firebase, fallback to local storage
-        const liveUSDT = typeof window.binanceBalance !== 'undefined' ? window.binanceBalance : parseFloat(localStorage.getItem('wallet_usdt_balance') || '3.36867032');
+        const liveUSDT = typeof window.binanceBalance !== 'undefined' ? window.binanceBalance : parseFloat(localStorage.getItem('wallet_usdt_balance') || '0');
 
         // Format with commas and exact decimals
         const formatWithCommas = (num, decimals) => {
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Switch balance display between Exchange and Wallet view
             const homeBalance = document.querySelector('.home-balance-amount');
-            const liveUSDT = parseFloat(localStorage.getItem('wallet_usdt_balance') || '3.36867032');
+            const liveUSDT = parseFloat(localStorage.getItem('wallet_usdt_balance') || '0');
 
             const formatHomeBalance = (num) => num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Home balance
     const initHomeBalance = document.querySelector('.home-balance-amount');
     if (initHomeBalance) {
-        const liveUSDT = parseFloat(localStorage.getItem('wallet_usdt_balance') || '3.36867032');
+        const liveUSDT = parseFloat(localStorage.getItem('wallet_usdt_balance') || '0');
         initHomeBalance.textContent = "$" + liveUSDT.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // Restore USDT listing with high-fidelity official Tether logo and KES balance
                 if (assetsItemsList) {
-                    const liveUSDT = parseFloat(localStorage.getItem('wallet_usdt_balance') || '3.36867032');
+                    const liveUSDT = parseFloat(localStorage.getItem('wallet_usdt_balance') || '0');
                     const KESVal = (liveUSDT * 129.6105).toFixed(2);
                     assetsItemsList.innerHTML = `
                         <div class="asset-item-row">
