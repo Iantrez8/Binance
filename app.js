@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
             fiatAmount: "KSh0.00"
         },
         USDT: {
-            balance: "0.00",
-            pnl: "0.00(0.00%)",
-            fiatAmount: "0.00 USDT"
+            balance: "$0.00",
+            pnl: "$0.00(0.00%)",
+            fiatAmount: "$0.00"
         },
         BTC: {
             balance: "0.00004812",
@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Dynamically compute conversions and pegs proportionally
-        currencyData.USDT.balance = formatWithCommas(liveUSDT, 2);
-        currencyData.USDT.fiatAmount = formatWithCommas(liveUSDT, 2) + " USDT";
+        currencyData.USDT.balance = "$" + formatWithCommas(liveUSDT, 2);
+        currencyData.USDT.fiatAmount = "$" + formatWithCommas(liveUSDT, 2);
 
         currencyData.KES.balance = "KSh" + formatWithCommas(liveUSDT * 129.6105, 2);
         currencyData.KES.fiatAmount = "KSh" + formatWithCommas(liveUSDT * 129.6105, 2);

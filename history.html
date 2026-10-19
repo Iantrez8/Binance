@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <style>
+        * { -webkit-tap-highlight-color: transparent !important; }
+        a { -webkit-tap-highlight-color: transparent !important; }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binance - Transaction History</title>
@@ -10,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=drawer-blend-v13">
 </head>
+
 <body>
     <!-- Premium Viewport Container centered on desktop, full-screen on mobile -->
     <div class="phone-viewport">
@@ -17,26 +23,32 @@
         <!-- History Top Navbar -->
         <nav class="history-header-navbar" style="padding: 15px 20px; align-items: flex-start;">
             <!-- Chevron Left Back Arrow -->
-            <a href="assets.html" style="color: inherit; display: flex; align-items: center; width: 24px; margin-top: 5px;">
-                <svg class="history-back-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <a href="assets.html"
+                style="color: inherit; display: flex; align-items: center; width: 24px; margin-top: 5px;">
+                <svg class="history-back-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
             </a>
-            
+
             <!-- Center Title and Subtitle -->
             <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
                 <div style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
                     <span style="font-size: 18px; font-weight: 600; color: var(--color-text-white);">Assets</span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 2px;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-top: 2px;">
                         <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
                 </div>
-                <span style="font-size: 12px; font-weight: 500; color: var(--color-text-gray); margin-top: 2px;">Overall</span>
+                <span
+                    style="font-size: 12px; font-weight: 500; color: var(--color-text-gray); margin-top: 2px;">Overall</span>
             </div>
-            
+
             <!-- Download Icon -->
             <div style="width: 24px; display: flex; justify-content: flex-end; margin-top: 5px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-text-white); cursor: pointer;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="color: var(--color-text-white); cursor: pointer;">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -71,7 +83,8 @@
             <!-- Markets -->
             <a href="javascript:void(0)" class="nav-tab-link">
                 <!-- Markets Icon: Trendline with up arrow and underline bar -->
-                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 19h16" />
                     <path d="M6 14l4-5 4 3 5-6" />
                     <path d="M15 6h4v4" />
@@ -81,7 +94,8 @@
             <!-- Trade -->
             <a href="javascript:void(0)" class="nav-tab-link">
                 <!-- Trade Icon: Double curved arrows circle with center diamond -->
-                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 12c0-4.4 3.6-8 8-8c2.4 0 4.6 1.1 6 2.8" />
                     <path d="M14 7h5V2" />
                     <path d="M20 12c0 4.4-3.6 8-8 8c-2.4 0-4.6-1.1-6-2.8" />
@@ -93,7 +107,8 @@
             <!-- Futures -->
             <a href="javascript:void(0)" class="nav-tab-link">
                 <!-- Futures Icon: Document outline with yellow/gold diamond bottom-right -->
-                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="5" y="3" width="14" height="18" rx="2" />
                     <line x1="8" y1="8" x2="16" y2="8" />
                     <line x1="8" y1="12" x2="13" y2="12" />
@@ -104,7 +119,8 @@
             <!-- Assets (Active) -->
             <a href="assets.html" class="nav-tab-link active">
                 <!-- Assets Icon: Folder/Wallet slot with center-right diamond -->
-                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="nav-tab-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 6h5l2 2h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" />
                     <polygon points="15,11 18,14 15,17 12,14" fill="#F0B90B" stroke="none" />
                 </svg>
@@ -118,4 +134,5 @@
     <script src="app.js?v=drawer-blend-v16"></script>
     <script type="module" src="firebase-sync.js?v=23"></script>
 </body>
+
 </html>

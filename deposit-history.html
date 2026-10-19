@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * { -webkit-tap-highlight-color: transparent !important; }
+        a { -webkit-tap-highlight-color: transparent !important; }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance - Deposit History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .history-header {
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background-color: var(--bg-color-main);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-main-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text-white);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .header-sub-title {
+            font-size: 11px;
+            color: var(--color-text-white);
+        }
+        .history-tabs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .tabs-left {
+            display: flex;
+            gap: 24px;
+        }
+        .tab-item {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-text-gray);
+            padding: 12px 0;
+            position: relative;
+            cursor: pointer;
+        }
+        .tab-item.active {
+            color: var(--color-text-white);
+            font-weight: 600;
+        }
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-accent-yellow);
+            border-radius: 2px 2px 0 0;
+        }
+        .support-banner {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color-main);
+        }
+        .support-text {
+            font-size: 12px;
+            color: var(--color-text-gray);
+        }
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            padding: 0 16px;
+        }
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none;
+        }
+        .item-left {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .item-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+        .coin-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text-white);
+        }
+        .item-date {
+            font-size: 12px;
+            color: var(--color-text-gray);
+        }
+        .item-amount {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-green);
+        }
+        .item-status {
+            font-size: 12px;
+            color: var(--color-text-gray);
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-viewport">
+        <!-- Header -->
+        <header class="history-header">
+            <a href="assets.html" style="color: var(--color-text-white); text-decoration: none; display: flex; align-items: center; width: 32px; height: 32px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <div class="header-title-container">
+                <div class="header-main-title">
+                    Assets
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="header-sub-title">Deposit</div>
+            </div>
+            <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: var(--color-text-white);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="history-tabs">
+            <div class="tabs-left">
+                <div class="tab-item active">Crypto</div>
+                <div class="tab-item">Cash</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+        </div>
+
+        <main class="scroll-content">
+            <div class="support-banner">
+                <span class="support-text">Deposits not arrived? Check solutions here</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-gray)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </div>
+
+            <div class="history-list" id="pendingListContainer">
+                <!-- Pending Item -->
+                <a href="deposit-details.html" class="history-item" id="pendingHistoryItem" style="display: none;">
+                    <div class="item-left">
+                        <span class="coin-name" id="pendingCoinName">ETH</span>
+                        <span class="item-date" id="pendingDate"></span>
+                    </div>
+                    <div class="item-right">
+                        <span class="item-amount" id="pendingAmount">+0.045</span>
+                        <span class="item-status">Confirming(1/6)(Est. 2 min)</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Dynamic Completed Items -->
+            <div class="history-records-list history-list"></div>
+        </main>
+    </div>
+
+    <script>
+        // Instantly show pending deposit if it was stored by assets.html to prevent any visual delay
+        const pendingAmt = localStorage.getItem('binance_pending_amount');
+        const pendingAsset = localStorage.getItem('binance_pending_asset');
+        const pendingTime = localStorage.getItem('binance_pending_time');
+        
+        if (pendingAmt && pendingAsset) {
+            const pendingHist = document.getElementById('pendingHistoryItem');
+            const coinNameEl = document.getElementById('pendingCoinName');
+            const amountEl = document.getElementById('pendingAmount');
+            const dateEl = document.getElementById('pendingDate');
+            
+            if (pendingHist) pendingHist.style.display = 'flex';
+            if (coinNameEl) coinNameEl.textContent = pendingAsset;
+            if (amountEl) amountEl.textContent = "+" + pendingAmt;
+            
+            if (dateEl && pendingTime) {
+                const d = new Date(parseInt(pendingTime));
+                dateEl.textContent = d.getFullYear() + "-" +
+                    String(d.getMonth() + 1).padStart(2, '0') + "-" +
+                    String(d.getDate()).padStart(2, '0') + " " +
+                    String(d.getHours()).padStart(2, '0') + ":" +
+                    String(d.getMinutes()).padStart(2, '0') + ":" +
+                    String(d.getSeconds()).padStart(2, '0');
+            }
+        }
+    </script>
+
+    <!-- Firebase SDKs -->
+    <script src="app.js"></script>
+    <script type="module" src="firebase-sync.js"></script>
+    
+    <script>
+        // Update the history list when the balance is successfully credited
+        window.addEventListener('binanceDepositCompleted', () => {
+            const pendingItem = document.getElementById('pendingHistoryItem');
+            if (pendingItem) {
+                pendingItem.querySelector('.item-status').textContent = 'Completed';
+                pendingItem.removeAttribute('href'); // No longer goes to details
+            }
+        });
+    </script>
+</body>
+</html>
